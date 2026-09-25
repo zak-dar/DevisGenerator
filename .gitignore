@@ -1,0 +1,28 @@
+################################################################################
+# .gitignore pour projet .NET / Visual Studio
+################################################################################
+
+# Dossiers de build
+[Bb]in/
+[Oo]bj/
+publish/
+out/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Résultats de build
+*.dll
+*.exe
+*.pdb
+
+# Archives de distribution
+*.zip
+
+# Fichiers temporaires Word
+~$*.docx
+~$*.doc
