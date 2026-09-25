@@ -111,6 +111,7 @@ namespace DevisGenerator.Pages
             InitialiserGrilleTarifaire();
         }
 
+        private BitmapSource? PhotoAscenceur;
         private BitmapSource? PhotoHall;
         private BitmapSource? PhotoCageEscaliers;
         private BitmapSource? PhotoPaliers;
@@ -173,6 +174,9 @@ namespace DevisGenerator.Pages
 
                 switch (btn.Name)
                 {
+                    case "btnPhotoAscenceur":
+                        PhotoAscenceur = finalImage;
+                        break;
                     case "btnPhotoHall":
                         PhotoHall = finalImage;
                         break;
@@ -199,6 +203,7 @@ namespace DevisGenerator.Pages
             }
         }
 
+        private void BtnPhotoAscenceur_Click(object sender, RoutedEventArgs e) => HandlePhotoButtonClick(sender, e);
         private void BtnPhotoHall_Click(object sender, RoutedEventArgs e) => HandlePhotoButtonClick(sender, e);
         private void BtnPhotoCageEscaliers_Click(object sender, RoutedEventArgs e) => HandlePhotoButtonClick(sender, e);
         private void BtnPhotoPaliers_Click(object sender, RoutedEventArgs e) => HandlePhotoButtonClick(sender, e);
@@ -277,11 +282,11 @@ namespace DevisGenerator.Pages
             SupprimerSiNonCoche(outputPath, "ShowPalier", chkShowAccesGarage);
             SupprimerSiNonCoche(outputPath, "NettoyagePortesAscenceur", nettoyagePortesAscenceurCheckbox);
             SupprimerSiNonCoche(outputPath, "NettoyageRailsAscenceur", nettoyageRailsAscenceurCheckbox);
-            SupprimerSiNonCoche(outputPath, "ShowTitreAccesGarage", chkShowGarage);
-            SupprimerSiNonCoche(outputPath, "ShowAccesGarage", chkShowGarage);
+            SupprimerSiNonCoche(outputPath, "ShowTitreAccesGarage", chkShowAccesGarage);
+            SupprimerSiNonCoche(outputPath, "ShowAccesGarage", chkShowAccesGarage);
             SupprimerSiNonCoche(outputPath, "ShowTitreGarage", chkShowGarage);
             SupprimerSiNonCoche(outputPath, "ShowGarage", chkShowGarage);
-            SupprimerSiNonCoche(outputPath, "frenquenceAccesGarage", chkShowGarage);
+            SupprimerSiNonCoche(outputPath, "frenquenceAccesGarage", chkShowAccesGarage);
             SupprimerSiNonCoche(outputPath, "frenquenceGarage", chkShowGarage);
             SupprimerSiNonCoche(outputPath, "EnlevementDetritutsFeuillesVoieAccesGarage", enlevementDetritutsFeuillesVoieAccesGarageCheckbox);
             SupprimerSiNonCoche(outputPath, "ShowTitreAbordsAcces", chkShowAbords);
@@ -305,6 +310,7 @@ namespace DevisGenerator.Pages
             // Photos choisies par l'utilisateur : redimensionnées si présentes, retirées sinon.
             var photos = new (string Tag, BitmapSource? Image)[]
             {
+                ("PhotoAscenceur", PhotoAscenceur),
                 ("PhotoHall", PhotoHall),
                 ("PhotoCageEscaliers", PhotoCageEscaliers),
                 ("PhotoPaliers", PhotoPaliers),
@@ -345,6 +351,7 @@ namespace DevisGenerator.Pages
                 Champ("frenquenceOrduresMenageres", frenquenceOrduresMenageresFinale),
 
                 Champ("clientNom", clientNom?.Text?.Trim() ?? string.Empty),
+                Champ("clientAdresse", clientAdresse?.Text?.Trim() ?? string.Empty),
                 Champ("numeroOpportunite", numeroOpportunite?.Text?.Trim() ?? string.Empty),
                 Champ("nomOpportunite", nomOpportunite?.Text?.Trim() ?? string.Empty),
                 Champ("referenceDevisClient", referenceDevisClient?.Text?.Trim() ?? string.Empty),
@@ -374,11 +381,11 @@ namespace DevisGenerator.Pages
             if (chkShowAccesGarage?.IsChecked == true) elements.Add(Champ("ShowPalier", Constantes.Constantes.SECTION_PALIER));
             if (nettoyagePortesAscenceurCheckbox?.IsChecked == true) elements.Add(Champ("NettoyagePortesAscenceur", Constantes.Constantes.NETTOYAGE_PORTES_ASCENCEUR));
             if (nettoyageRailsAscenceurCheckbox?.IsChecked == true) elements.Add(Champ("NettoyageRailsAscenceur", Constantes.Constantes.NETTOYAGE_RAILS_ASCENCEUR));
-            if (chkShowGarage?.IsChecked == true) elements.Add(Champ("ShowTitreAccesGarage", Constantes.Constantes.TITRE_SECTION_ACCES_GARAGE));
-            if (chkShowGarage?.IsChecked == true) elements.Add(Champ("ShowAccesGarage", Constantes.Constantes.SECTION_ACCES_GARAGE));
+            if (chkShowAccesGarage?.IsChecked == true) elements.Add(Champ("ShowTitreAccesGarage", Constantes.Constantes.TITRE_SECTION_ACCES_GARAGE));
+            if (chkShowAccesGarage?.IsChecked == true) elements.Add(Champ("ShowAccesGarage", Constantes.Constantes.SECTION_ACCES_GARAGE));
             if (chkShowGarage?.IsChecked == true) elements.Add(Champ("ShowTitreGarage", Constantes.Constantes.TITRE_SECTION_GARAGE));
             if (chkShowGarage?.IsChecked == true) elements.Add(Champ("ShowGarage", Constantes.Constantes.SECTION_GARAGE));
-            if (chkShowGarage?.IsChecked == true) elements.Add(Champ("frenquenceAccesGarage", frenquenceAccesGarageFinale));
+            if (chkShowAccesGarage?.IsChecked == true) elements.Add(Champ("frenquenceAccesGarage", frenquenceAccesGarageFinale));
             if (chkShowGarage?.IsChecked == true) elements.Add(Champ("frenquenceGarage", frenquenceGarageFinale));
             if (enlevementDetritutsFeuillesVoieAccesGarageCheckbox?.IsChecked == true) elements.Add(Champ("EnlevementDetritutsFeuillesVoieAccesGarage", Constantes.Constantes.ENLEVEMENT_DETRITUTS_FEUILLES_VOIE_ACCES_GARAGE));
             if (chkShowAbords?.IsChecked == true) elements.Add(Champ("ShowTitreAbordsAcces", Constantes.Constantes.TITRE_SECTION_ABORDS_ACCES));

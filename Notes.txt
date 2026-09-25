@@ -1,7 +1,7 @@
-Ajouter photo dans la partie ascenceur
-Ordure ménagere : ecrire fréquence tout court (au lieu de nettoyage)
+V - Ajouter photo dans la partie ascenceur
+V - Ordure ménagere : ecrire fréquence tout court (au lieu de nettoyage)
 V - Supprimer syndic et ajouter la saisie d'adresse
-La section Acces garage reste si on le decoche
+V - La section Acces garage reste si on le decoche
 V - Les 3 grosses images de fin, il faut retirer les encadrements et les couleurs
 V - Revoir les tableaux d'affichage du montant de la proposition financiere
 V - Ajouter un option apres le tarif : transport d'eau de 7€ HT

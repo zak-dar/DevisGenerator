@@ -279,21 +279,16 @@
                Margin="0,0,0,8"
                ToolTip="Saisissez le nom d'opportunité"/>
 
-        <!-- Sélection copropriété -->
-        <Label x:Name="coproNameLabel"
-             Content="Sélectionnez la copropriété :"
+        <!-- Adresse du client -->
+        <Label x:Name="clientAdresseLabel"
+             Content="Adresse du client :"
              Grid.Row="3" Grid.Column="0"
-             Target="{Binding ElementName=cmbCopro}"/>
-        <ComboBox x:Name="cmbCopro"
-                Grid.Row="3" Grid.Column="1"
-                MinWidth="250"
-                Margin="0,0,0,8"
-                IsEditable="False"
-                ToolTip="Choisissez une copropriété">
-            <ComboBoxItem Content="Copropriété 1"/>
-            <ComboBoxItem Content="Copropriété 2"/>
-            <ComboBoxItem Content="Copropriété 3"/>
-        </ComboBox>
+             Target="{Binding ElementName=clientAdresse}"/>
+        <TextBox x:Name="clientAdresse"
+               Grid.Row="3" Grid.Column="1"
+               MinWidth="250"
+               Margin="0,0,0,8"
+               ToolTip="Saisissez l'adresse du client"/>
 
         <!-- Champ additionnel en lecture seule (ex : copie) -->
         <Label x:Name="referenceDevisClientLabel"
@@ -383,8 +378,12 @@
                                 <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
-                            <Label x:Name="frenquenceAscenceurLabel" Grid.Column="0" Content="Fréquence de nettoyage"/>
-                            <StackPanel Orientation="Horizontal" Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Label x:Name="frenquenceAscenceurLabel" Grid.Row="0" Grid.Column="0" Content="Fréquence de nettoyage"/>
+                            <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="1">
                                 <ComboBox x:Name="frenquenceAscenceur" MinWidth="200" Height="25" Margin="0,0,8,0" SelectedIndex="0">
                                     <ComboBoxItem Content="1 fois/mois"/>
                                     <ComboBoxItem Content="Tous les 15 jours"/>
@@ -396,6 +395,7 @@
                                 </ComboBox>
                                 <TextBox x:Name="frenquenceAscenceur_Manual" Width="140" ToolTip="Saisie manuelle (utilisez si 'Autre')" Visibility="{Binding SelectedItem, ElementName=frenquenceAscenceur, Converter={StaticResource ComboToVis}}"/>
                             </StackPanel>
+                            <Button x:Name="btnPhotoAscenceur" Grid.Row="1" Grid.Column="0" Content="📷 Insérer une photo" MaxWidth="200" MinWidth="140" Style="{StaticResource PhotoButtonStyle}" Click="BtnPhotoAscenceur_Click" HorizontalAlignment="Left" Margin="0,8,0,0"/>
                         </Grid>
                     </StackPanel>
                 </Border>
