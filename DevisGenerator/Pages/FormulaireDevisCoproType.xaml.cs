@@ -295,6 +295,8 @@ namespace DevisGenerator.Pages
             SupprimerSiNonCoche(outputPath, "ShowTitreLocalConteneurs", chkShowLocalConteneurs);
             SupprimerSiNonCoche(outputPath, "ShowLocalConteneurs", chkShowLocalConteneurs);
             SupprimerSiNonCoche(outputPath, "frenquenceLocalConteneurVideOrdures", chkShowLocalConteneurs);
+            SupprimerSiNonCoche(outputPath, "ShowTitreOrdures", chkShowOrdures);
+            SupprimerSiNonCoche(outputPath, "frenquenceOrduresMenageres", chkShowOrdures);
             SupprimerSiNonCoche(outputPath, "SortieConteneurs", sortieConteneurCheckbox);
             SupprimerSiNonCoche(outputPath, "SortieSacs", sortieSacsCheckbox);
             SupprimerSiNonCoche(outputPath, "TransportEau", chkTransportEau);
@@ -348,7 +350,6 @@ namespace DevisGenerator.Pages
                 Champ("frenquenceHallEntree", frenquenceHallEntreeFinale),
                 Champ("frenquenceCageDEscaliers", frenquenceCageDEscaliersFinale),
                 Champ("frenquencePaliers", frenquencePaliersFinale),
-                Champ("frenquenceOrduresMenageres", frenquenceOrduresMenageresFinale),
 
                 Champ("clientNom", clientNom?.Text?.Trim() ?? string.Empty),
                 Champ("clientAdresse", clientAdresse?.Text?.Trim() ?? string.Empty),
@@ -394,6 +395,8 @@ namespace DevisGenerator.Pages
             if (chkShowLocalConteneurs?.IsChecked == true) elements.Add(Champ("ShowTitreLocalConteneurs", Constantes.Constantes.TITRE_SECTION_LOCAL_CONTENEUR_VIDE_ORDURE));
             if (chkShowLocalConteneurs?.IsChecked == true) elements.Add(Champ("ShowLocalConteneurs", Constantes.Constantes.SECTION_LOCAL_CONTENEUR_VIDE_ORDURE));
             if (chkShowLocalConteneurs?.IsChecked == true) elements.Add(Champ("frenquenceLocalConteneurVideOrdures", frenquenceLocalConteneurVideOrduresFinale));
+            if (chkShowOrdures?.IsChecked == true) elements.Add(Champ("ShowTitreOrdures", "Ordures Ménagères"));
+            if (chkShowOrdures?.IsChecked == true) elements.Add(Champ("frenquenceOrduresMenageres", frenquenceOrduresMenageresFinale));
             if (sortieConteneurCheckbox?.IsChecked == true) elements.Add(Champ("SortieConteneurs", Constantes.Constantes.SORTIE_CONTENEUR));
             if (sortieSacsCheckbox?.IsChecked == true) elements.Add(Champ("SortieSacs", Constantes.Constantes.SORTIE_SACS));
 
